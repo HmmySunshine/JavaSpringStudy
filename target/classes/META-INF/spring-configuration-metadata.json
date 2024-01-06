@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "fzh.info",
+      "type": "com.fanzehao.www.config.FZHConfig",
+      "sourceType": "com.fanzehao.www.config.FZHConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "fzh.info.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.fanzehao.www.config.FZHConfig"
+    },
+    {
+      "name": "fzh.info.id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.fanzehao.www.config.FZHConfig"
+    },
+    {
+      "name": "fzh.info.name",
+      "type": "java.lang.String",
+      "sourceType": "com.fanzehao.www.config.FZHConfig"
+    }
+  ],
+  "hints": []
+}
