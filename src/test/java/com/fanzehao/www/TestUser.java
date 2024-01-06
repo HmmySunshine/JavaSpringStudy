@@ -48,20 +48,22 @@ public class TestUser {
 //        userService.save(user1);
 //
         User user2 = User.builder().id(2).userName("xiaohu").userPwd("1234").userAge(16).userAccount("user").build();
-        userService.save(user2);
-
-        System.out.println(userService.getById(2));
-
-
         User updateUser = User.builder().id(2).userAge(17).build();
         // 执行更新操作
         System.out.println(userService.updateById(updateUser));
+        System.out.println(userService.getById(2));
+
 
         System.out.println(userService.removeById(2));
 
         List<User> userList = userService.list();
         userList.forEach(System.out::println);
         //userMapper.insert(user);
+        User user3 = User.builder().id(4).userName("xiaoming").userPwd("6666").userAge(18).userAccount("user").build();
+        userMapper.insert(user3);
+        userMapper.updateById(user3); //
+        userMapper.selectById(4); // 根据主键查询
+        //userMapper.deleteById(4);
 
 
 
@@ -94,7 +96,7 @@ public class TestUser {
     @Test
     public void testWrappper(){
         QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-        userQueryWrapper.eq("id",3);
+        userQueryWrapper.eq("id",1);
         User one = userService.getOne(userQueryWrapper);
         System.out.println(one);
 
