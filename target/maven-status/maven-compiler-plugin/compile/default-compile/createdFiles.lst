@@ -2,11 +2,16 @@ com\fanzehao\www\mapper\UserMapper.class
 META-INF\spring-configuration-metadata.json
 com\fanzehao\www\vo\response\FeedBackResponseVo.class
 com\fanzehao\www\controller\IndexController.class
+com\fanzehao\www\util\Assert.class
 com\fanzehao\www\service\UserService.class
 com\fanzehao\www\config\FZHConfig.class
 com\fanzehao\www\vo\request\FeedBackRequestVo.class
+com\fanzehao\www\util\RespResult$RespResultBuilder.class
 com\fanzehao\www\FanZeHaoSpringBooot.class
 com\fanzehao\www\controller\FindIllnessController.class
+com\fanzehao\www\controller\LoginController.class
 com\fanzehao\www\vo\response\Student.class
 com\fanzehao\www\entity\User$UserBuilder.class
 com\fanzehao\www\entity\User.class
+com\fanzehao\www\util\EmailClient.class
+com\fanzehao\www\util\RespResult.class
