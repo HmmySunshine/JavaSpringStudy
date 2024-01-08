@@ -16,6 +16,8 @@ function sendEmailCode() {
         url: "login/sendEmailCode",
         data: {
             email: email,
+            mobile:'1234567',
+            username:'test'
         },
         dataType: "json",
         success: function (data) {
@@ -25,6 +27,15 @@ function sendEmailCode() {
                 // 禁用按钮，60秒倒计时
                 time("#email-code", 60);
             }
+        },
+        fail: function(res) {
+            console.log("请求失败");
+            console.dir(res);
+        },
+        complete: function(res) {
+
+            console.log("请求完成");
+            console.dir(res);
         }
     });
 }

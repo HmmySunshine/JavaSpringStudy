@@ -11,8 +11,8 @@ spring:
     time-zone: GMT+8
   # 邮件配置
   mail:
-    username: xxxxx@qq.com
-    password: xxxxx
+    username: 1647114628@qq.com
+    password: bgicpuklsztgbhdh
     host: smtp.qq.com
     port: 465
     properties:
