@@ -1,7 +1,7 @@
 package com.fanzehao.www.controller;
 
 import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+
 import com.fanzehao.www.entity.User;
 import com.fanzehao.www.service.UserService;
 import com.fanzehao.www.util.Assert;
@@ -21,11 +21,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Map;
-@Controller
 //在类中使用，表示访问该控制器，必须以/login开头
+@Controller
+
 @RequestMapping("/login")
 public class LoginController {
     //注入发送邮件的工具类
+
     @Autowired
     protected UserService userService;
     @Autowired
@@ -94,10 +96,12 @@ public class LoginController {
             return  RespResult.fail("邮箱格式不正确");
         }
 
-
+        String getCode = "code";
         //验证码是否正确?
         Map<String, Object> codeMap = (Map<String, Object>) session.getAttribute("EMAIL_CODE" + email);
-        String emailCode = (String) codeMap.get("code");
+        String emailCode = (String) codeMap.get(getCode);
+        System.out.println(emailCode);
+
         if (Assert.isEmpty(codeMap))
         {
             return RespResult.fail("请先获取验证码");
@@ -147,26 +151,33 @@ public class LoginController {
     {
         String userAccount = user.getUserAccount();
         String userPwd = user.getUserPwd();
-//        if (Assert.isEmpty(userAccount))
-//        {
-//            return RespResult.fail("账户不能为空");
-//        }
-//
-//        if (Assert.isEmpty(userPwd))
-//        {
-//            return RespResult.fail("密码不能为空");
-//        }
-        User byUserAccount = userService.findUserByUserAccount(user);
 
-        if (Assert.isEmpty(byUserAccount))
+        User byUserAccount = userService.findUserByUserAccount(user);
+        User user2 = userService.getById(byUserAccount.getId());
+        if (Assert.isEmpty(user2))
         {
             return RespResult.fail("账号不存在");
         }
-        if (!byUserAccount.getUserPwd().equals(userPwd))
+        if (!user2.getUserPwd().equals(userPwd))
         {
             return RespResult.fail("登录失败密码错误");
         }
+        Date d = new Date();
+        System.out.println(d);
+        user2.setUpdateTime(d);
 
+// 添加日志输出
+        System.out.println("Before update: " + user2);
+
+        if (userService.updateById(user2)) {
+            System.out.println("更新成功");
+        } else {
+            System.out.println("更新失败");
+        }
+
+// 添加日志输出
+        System.out.println("After update: " + user2);
+        session.setAttribute("loginUser", user2);
         return RespResult.success("登录成功");
     }
     @ModelAttribute

@@ -6,6 +6,7 @@ D:\LearnJava\maventest\src\main\java\com\fanzehao\www\util\EmailClient.java
 D:\LearnJava\maventest\src\main\java\com\fanzehao\www\controller\IndexController.java
 D:\LearnJava\maventest\src\main\java\com\fanzehao\www\controller\FindIllnessController.java
 D:\LearnJava\maventest\src\main\java\com\fanzehao\www\entity\User.java
+D:\LearnJava\maventest\src\main\java\com\fanzehao\www\util\ValidationUtils.java
 D:\LearnJava\maventest\src\main\java\com\fanzehao\www\config\MybatisPlusConfig.java
 D:\LearnJava\maventest\src\main\java\com\fanzehao\www\vo\response\FeedBackResponseVo.java
 D:\LearnJava\maventest\src\main\java\com\fanzehao\www\service\UserService.java

@@ -105,7 +105,17 @@ function login() {
             if (data['code'] === 'SUCCESS') {
                 setTimeout('reload()', 2000);
             }
-        }
+        },
+        fail: function(res) {
+                    console.log("请求失败");
+                    console.dir(res);
+            },
+                complete: function(res) {
+
+                    console.log("请求完成");
+                    console.dir(res);
+                }
+
     });
 
 }
