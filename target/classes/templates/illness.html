@@ -40,7 +40,7 @@
                         <div class="dashboard-review single-comments">
                             <div class="comments">
                                 <div style="margin-top: 30px;text-align: center"><h3 th:text="${title eq null}?'全部':('与'+${title}+'相关的药如下')"></h3></div>
-                                <div class="comment-box d-flex align-items-center justify-content-between" th:each="me:${medicineList}">
+                                <div class="comment-box d-flex align-items-center justify-content-between" th:each="me:${medicine}">
                                     <div class="comment-image">
                                         <a th:href="@{findMedicineOne(id=${me.id})}">
                                         <img th:src="${me.imgPath}" alt="image"/>

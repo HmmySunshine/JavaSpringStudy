@@ -149,6 +149,7 @@ function updateProfile() {
         success: function (data) {
             layer.msg(data['message']);
             if (data['code'] === 'SUCCESS') {
+
                 setTimeout('reload()', 2000);
             }
         }
@@ -530,6 +531,7 @@ function searchGroup(kind) {
         return;
     }
     let href = window.location.href;
+
     href = href.split("/")[0] + "/findIllness?illnessName="+content+"&kind="+kind;
     reloadToGO(href);
 }
@@ -561,6 +563,8 @@ function searchGlobalSelect() {
     alert(href);
     href = href.split("/")[0] + "/findIllness?illnessName="+content;
     reloadToGO(href);
+
+
 }
 /**
  * 搜索药

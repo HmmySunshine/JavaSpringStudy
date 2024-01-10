@@ -15,4 +15,10 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return  this.getOne(lambdaQueryWrapper);
     }
 
+    public User findUserByUserPwd(User user)
+    {
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(User::getUserPwd, user.getUserPwd());
+        return  this.getOne(lambdaQueryWrapper);
+    }
 }
