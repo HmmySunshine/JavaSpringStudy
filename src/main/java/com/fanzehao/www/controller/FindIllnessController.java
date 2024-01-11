@@ -30,15 +30,36 @@ public class FindIllnessController {
     private MedicineService medicineService;
 
     @RequestMapping("/findIllness")
-    public String FindIllness(Model model, String illnessName, @RequestParam(defaultValue = "1") Integer page)
+    public String FindIllness(Model model, String illnessName,@RequestParam(required = false) String kindName,
+                              @RequestParam(defaultValue = "1") Integer page)
     {
-
+          System.out.println(kindName);
           IPage<Illness> illnessPageDataByIllnessName = illnessService.getIllnessPageDataByIllnessName(illnessName, page, 10);
           model.addAttribute("illness",illnessPageDataByIllnessName.getRecords());
           System.out.println("执行find页面");
 
           return "search-illness";
     }
+
+
+
+    // <a th:href="@{findIllnessOne(id=${id})}" class="cl-blue" th:text="${illness.illnessName}"> Great Services Provided to Help You Take
+    //                                Control </a>
+    @RequestMapping("/findIllnessOne")
+    public String FindIllnessOne(Model model, @RequestParam String id,
+                                 @RequestParam(defaultValue = "1") Integer page)
+    {
+
+        System.out.println(id);
+
+        IPage<Illness> illnessPageDataByIllnessName = illnessService.getIllnessPageDataByIllnessId(id, page, 10);
+
+        model.addAttribute("illness",illnessPageDataByIllnessName.getRecords());
+        System.out.println("执行find页面");
+
+        return "search-illness";
+    }
+
 
 
 

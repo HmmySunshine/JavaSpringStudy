@@ -11,10 +11,7 @@ import com.fanzehao.www.util.ValidationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,6 +54,14 @@ public class LoginController {
             //静态方法内部不能使用this关键字
             return RespResult.fail("邮箱不可为空");
         }
+
+        //其他参数非空自己补充
+        //验证输入的手机号手机和邮箱格式是否正确
+
+//        if (!ValidationUtils.isValidChineseString(userName))
+//        {
+//            return RespResult.fail("姓名格式不正确只能是中文");
+//        }
         // 发送验证码
         String verifyCode = emailClient.sendEmailCode(email);
         //把邮箱地址，验证码，有效期写入会话对象中
@@ -76,25 +81,7 @@ public class LoginController {
         System.out.println(code);
         String email = user.getUserEmail();
 
-        String tel = user.getUserTel();
-        if (Assert.isEmpty(email))
-        {
-            return RespResult.fail("邮箱为空");
-        }
-        if (Assert.isEmpty(tel))
-        {
-            return RespResult.fail("手机号为空");
-        }
-        //其他参数非空自己补充
-        //验证输入的手机号手机和邮箱格式是否正确
-        if (!ValidationUtils.isValidPhoneNumber(tel))
-        {
-            return RespResult.fail("手机号格式不正确");
-        }
-        if (!ValidationUtils.isValidEmailAddress(email))
-        {
-            return  RespResult.fail("邮箱格式不正确");
-        }
+
 
         String getCode = "code";
         //验证码是否正确?
@@ -135,6 +122,7 @@ public class LoginController {
         System.out.println(d);
         user.setCreateTime(d);
         user.setUpdateTime(d);
+
         if (userService.save(user))
         {
             return RespResult.success("恭喜你注册成功");

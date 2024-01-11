@@ -2,7 +2,19 @@
  * 发送验证码
  */
 function sendEmailCode() {
+
     let email = $('#userEmail').val();
+    let userAccount = $('#userAccount').val();
+    let userName = $('#userName').val();
+    let userPwd = $('#userPwd').val();
+    let userTel = $('#userTel').val();
+    let userAge = $('#userAge').val();
+    let userSex = $('#userSex').find("option:selected").val();
+
+    if (!userAccount || !userName || !userPwd || !userTel || !userAge || !userEmail) {
+            layer.msg("请完整填写信息");
+            return;
+      }
     if (!email) {
         layer.msg("邮箱不能为空");
         return;
@@ -11,13 +23,22 @@ function sendEmailCode() {
         layer.msg("请输入正确的邮箱地址");
         return;
     }
+    if (!phoneReg(userTel)) {
+        layer.msg("请输入正确的手机号");
+        return;
+    }
+    if (!userNameReg(userName)) {
+        layer.msg("姓名只能为中文");
+        return;
+    }
+
     $.ajax({
         type: "POST",
         url: "login/sendEmailCode",
         data: {
             email: email,
-            mobile:'1234567',
-            username:'test'
+            userName: userName,
+
         },
         dataType: "json",
         success: function (data) {

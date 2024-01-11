@@ -23,11 +23,12 @@ function phoneReg(phone) {
  * @param name
  * @returns {boolean}
  */
+
+
 function userNameReg(name) {
-    let userNameReg = /^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[a-zA-Z]){1,10}$/;
+    let userNameReg = /^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]){1,10}$/;
     return userNameReg.test(name);
 }
-
 /**
  * 密码正则：8-16字符，支持英文、数字、下划线
  * @param password
@@ -38,5 +39,8 @@ function userPasswordReg(password) {
     return userPasswordReg.test(password);
 }
 
-
+//function userAccountReg(name) {
+//    let userNameReg = /^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[a-zA-Z]){1,10}$/;
+//    return userNameReg.test(name);
+//}
 
