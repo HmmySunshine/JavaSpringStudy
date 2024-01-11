@@ -309,6 +309,11 @@ function feedback() {
         return;
     }
 
+    if (!emailReg(email)) {
+        layer.msg("请输入正确的邮箱地址");
+        return;
+    }
+
     $.ajax({
         type: "POST",
         url: "feedback/save",

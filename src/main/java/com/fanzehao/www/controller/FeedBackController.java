@@ -31,6 +31,6 @@ public class FeedBackController {
     public RespResult feedBack(FeedBack feedBack)
     {
         feedBackService.save(feedBack);
-        return RespResult.success("ok");
+        return RespResult.success("提交成功");
     }
 }
