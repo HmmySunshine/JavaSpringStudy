@@ -155,6 +155,14 @@ function updateProfile() {
         layer.msg("请完整填写信息");
         return;
     }
+    if (!phoneReg(userTel)) {
+        layer.msg("请输入正确的手机号");
+        return;
+    }
+    if (!userNameReg(userName)) {
+        layer.msg("姓名只能为中文");
+        return;
+    }
 
     $.ajax({
         type: "POST",
